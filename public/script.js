@@ -31,12 +31,13 @@ function displayBotMessage(message, isLoading = false) {
 
 // Gửi câu hỏi đến backend và nhận câu trả lời
 async function sendMessage(message) {
+    const loadingMessage = displayBotMessage('', true); // Hiển thị "Đang trả lời..."
     try {
         // Hiển thị thông báo "Đang trả lời..."
-        const loadingMessage = displayBotMessage('', true); // Hiển thị "Đang trả lời..."
+
 
         // Gửi yêu cầu đến backend
-        const response = await fetch('http://localhost:3000/ask', {
+        const response = await fetch('/data/ask', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +58,14 @@ async function sendMessage(message) {
         loadingMessage.classList.remove('loading'); // Loại bỏ lớp "loading" để ngừng hiệu ứng động
     } catch (error) {
         console.error('Error:', error);
-        displayBotMessage('Có lỗi xảy ra, vui lòng thử lại sau.');
+
+        loadingMessage.classList.remove('loading'); // Loại bỏ lớp "loading" để ngừng hiệu ứng độngdisplayBotMessage('', false);
+        // displayBotMessage('Có lỗi xảy ra, vui lòng thử lại sau.', false);
+        loadingMessage.innerText = 'Có lỗi xảy ra, vui lòng thử lại sau.'
+
+    }
+    finally {
+        loadingMessage.classList.remove('loading'); // Loại bỏ lớp "loading" để ngừng hiệu ứng động
     }
 }
 

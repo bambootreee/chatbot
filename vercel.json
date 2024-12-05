@@ -2,11 +2,15 @@
   "version": 2,
   "builds": [
     {
+      "src": "api/ask.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "index.js",
       "use": "@vercel/node"
     },
     {
-      "src": "public/index.html",
+      "src": "public/*",
       "use": "@vercel/static"
     }
   ],
@@ -16,7 +20,19 @@
       "dest": "/api/ask.js"
     },
     {
-      "src": "/index.html",
+      "src": "/data/ask",
+      "dest": "index.js"
+    },
+    {
+      "src": "/styles.css",
+      "dest": "/public/styles.css"
+    },
+    {
+      "src": "/script.js",
+      "dest": "/public/script.js"
+    },
+    {
+      "src": "/",
       "dest": "/public/index.html"
     }
   ]

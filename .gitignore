@@ -6,3 +6,4 @@ node_modules/
 
 # Tệp package-lock.json không cần thiết khi triển khai
 package-lock.json
+.vercel
