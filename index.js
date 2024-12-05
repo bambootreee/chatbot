@@ -17,10 +17,6 @@ const port = process.env.PORT || 3000;
 // Cung cấp file HTML và các tài nguyên tĩnh
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Định nghĩa route gốc để trả về file index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // Enable CORS for all routes
 app.use(cors());
