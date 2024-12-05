@@ -1,0 +1,171 @@
+/* Reset margin, padding và box-sizing cho tất cả phần tử */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Chiếm toàn bộ chiều cao của màn hình */
+}
+
+/* Đảm bảo chat-container chiếm toàn bộ chiều cao của màn hình */
+.chat-container {
+    width: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Chiều cao container đầy đủ */
+}
+
+/* Title chat */
+.chat-title {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+/* Phần thân chat, có thể cuộn khi tin nhắn dài */
+.chat-body {
+    flex-grow: 1; /* Chiếm phần không gian còn lại giữa header và footer */
+    overflow-y: auto; /* Cho phép cuộn */
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tin nhắn chung */
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+/* Tin nhắn người dùng */
+.user-message {
+    background-color: #c8e6c9;
+    align-self: flex-end; /* Tin nhắn người dùng bên phải */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 75%;
+    word-wrap: break-word;
+    position: relative;
+}
+
+/* Phần footer */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Input người dùng */
+#user-input {
+    flex: 1; /* Phần tử input chiếm hết không gian còn lại */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Nút gửi */
+#send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+/* Container các lựa chọn */
+.options-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nút lựa chọn */
+.option-button {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Xóa focus outline khi nhấn nút */
+.chat-container button:focus {
+    outline: none;
+}
+.loading-message {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    color: #007bff;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+/* Tin nhắn của bot */
+.bot-message {
+    background-color: #e1f5fe;
+    align-self: flex-start; /* Tin nhắn bot bên trái */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    max-width: 75%;
+    word-wrap: break-word;
+    position: relative;
+}
+
+/* Hiệu ứng "Đang trả lời..." với dấu ba chấm */
+.bot-message.loading {
+    padding-right: 30px;  /* Tạo khoảng cách cho dấu ba chấm */
+}
+
+.bot-message.loading::after {
+    content: '...'; /* Hiển thị dấu ba chấm */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Canh giữa theo chiều dọc */
+    animation: loadingDots 1.5s infinite steps(1, end);
+}
+
+/* Dấu ba chấm nhấp nháy */
+@keyframes loadingDots {
+    0% {
+        content: '.';
+    }
+    33% {
+        content: '..';
+    }
+    66% {
+        content: '...';
+    }
+    100% {
+        content: '.';
+    }
+}
